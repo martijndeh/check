@@ -1,6 +1,6 @@
 # Check
 [![Build Status](https://travis-ci.org/martijndeh/lego.svg?branch=master)](https://travis-ci.org/martijndeh/check)
-[![Coverage Status](https://coveralls.io/repos/martijndeh/check/badge.svg?branch=master&service=github)](https://coveralls.io/github/martijndeh/check?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/martijndeh/check/badge.svg?branch=master)](https://coveralls.io/github/martijndeh/check?branch=master)
 
 A type checker for JavaScript inspired by Meteor's check.
 
