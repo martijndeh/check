@@ -189,4 +189,19 @@ describe('types', function() {
 		assert.throws(() => check({}, Array), TypeError);
 		assert.throws(() => check({id: 123}, Array), TypeError);
 	});
+
+	it('Function', function() {
+		check(function() {}, Function);
+		check([function() {}], [Function]);
+
+		assert.throws(() => check(undefined, Function), TypeError);
+		assert.throws(() => check(null, Function), TypeError);
+		assert.throws(() => check('test', Function), TypeError);
+		assert.throws(() => check(/$/i, Function), TypeError);
+		assert.throws(() => check(0, Function), TypeError);
+		assert.throws(() => check(1, Function), TypeError);
+		assert.throws(() => check('fail', Function), TypeError);
+		assert.throws(() => check({}, Function), TypeError);
+		assert.throws(() => check({id: 123}, Function), TypeError);
+	});
 });

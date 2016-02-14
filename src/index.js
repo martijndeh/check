@@ -18,6 +18,9 @@ function check(value, ...patterns) {
 		else if(pattern === Boolean) {
 			return (typeof value === 'boolean');
 		}
+		else if(pattern === Function) {
+			return (typeof value === 'function');
+		}
 		else if(pattern instanceof RegExp) {
 			return (pattern.test(value) === true);
 		}
