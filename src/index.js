@@ -28,7 +28,7 @@ function check(value, ...patterns) {
 			return (value !== null) && (typeof value === 'object');
 		}
 		else if(typeof pattern === 'object') {
-			return Object.keys(pattern).every((key) => _check(value[key], pattern[key]));
+			return _check(value, Object) && Object.keys(pattern).every((key) => _check(value[key], pattern[key]));
 		}
 		else {
 			return (value instanceof pattern);
