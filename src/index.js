@@ -37,14 +37,18 @@ function check(value, ...patterns) {
 		}
 	};
 
-	let valid = patterns.some((pattern) => {
-		if(Array.isArray(pattern)) {
-			return Array.isArray(value) && value.every((subvalue) => _check(subvalue, pattern[0]));
-		}
-		else {
-			return _check(value, pattern);
-		}
-	});
+	if(patterns.length === 0) {
+		throw new Error(`No patterns to check.`);
+	}
+	else {
+		let valid = patterns.some((pattern) => {
+			if(Array.isArray(pattern)) {
+				return Array.isArray(value) && value.every((subvalue) => _check(subvalue, pattern[0]));
+			}
+			else {
+				return _check(value, pattern);
+			}
+		});
 
 		if(!valid) {
 			throw new CheckError(`Value ${JSON.stringify(value)} is not of type ${patterns.map((pattern) => JSON.stringify(pattern)).join(', ')}.`);
