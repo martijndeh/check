@@ -1,3 +1,5 @@
+let CheckError = require('./error.js');
+
 function check(value, ...patterns) {
 	let _check = function(value, pattern) {
 		if(typeof pattern === 'undefined') {
@@ -44,8 +46,9 @@ function check(value, ...patterns) {
 		}
 	});
 
-	if(!valid) {
-		throw new TypeError(`Value ${value} is not of type ${patterns}.`);
+		if(!valid) {
+			throw new CheckError(`Value ${JSON.stringify(value)} is not of type ${patterns.map((pattern) => JSON.stringify(pattern)).join(', ')}.`);
+		}
 	}
 }
 
