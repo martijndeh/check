@@ -41,3 +41,12 @@ Please have a look at the tests to see more examples.
 ## Limitations
 
 This library does not expose any `Match`-like functions, like Meteor's check library. Instead, this library only uses a check based on patterns to keep it's api simple. If you want `Match` features, have a look at [meteor-check](https://www.npmjs.com/package/meteor-check) instead.
+
+## Tests
+
+To execute the tests, run the following commands:
+
+```
+npm run build
+npm run test
+```
