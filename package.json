@@ -1,6 +1,6 @@
 {
   "name": "type-check-system",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A simple type checker for JavaScript inspired by Meteor's check.",
   "main": "index.js",
   "scripts": {
