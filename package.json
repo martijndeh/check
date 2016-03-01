@@ -1,13 +1,13 @@
 {
   "name": "type-check-system",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple type checker for JavaScript inspired by Meteor's check.",
   "main": "index.js",
   "scripts": {
     "build": "babel src -d lib",
     "test": "NODE_ENV=test mocha -g '^' --reporter spec ./test/*.js",
-    "coverage-html": "jscoverage lib lib-cov && NODE_COV=1 NODE_ENV=test mocha ./test/*.js -R html-cov > coverage.html && rm -rf lib-cov",
-    "coverage": "jscoverage lib lib-cov && NODE_COV=1 NODE_ENV=test mocha ./test/*.js -R mocha-lcov-reporter > coverage.lcov && rm -rf lib-cov",
+    "coverage-html": "jscoverage lib lib-cov && NODE_COV_CHECK=1 NODE_ENV=test mocha ./test/*.js -R html-cov > coverage.html && rm -rf lib-cov",
+    "coverage": "jscoverage lib lib-cov && NODE_COV_CHECK=1 NODE_ENV=test mocha ./test/*.js -R mocha-lcov-reporter > coverage.lcov && rm -rf lib-cov",
     "coveralls": "cat ./coverage.lcov | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
