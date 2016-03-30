@@ -1,8 +1,8 @@
 'use strict';
 
-const check = require('..');
-const assert = require('assert');
-const CheckError = require('../lib/error.js');
+import check from '../src/index.js';
+import assert from 'assert';
+import CheckError from '../src/error.js';
 
 describe('types', function() {
 	it('undefined', function() {
