@@ -1,6 +1,6 @@
 {
   "name": "type-check-system",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "A simple type checker for JavaScript inspired by Meteor's check.",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
