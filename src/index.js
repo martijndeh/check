@@ -1,5 +1,21 @@
 import CheckError from './error.js';
 
+function getDescription(pattern) {
+	if (Array.isArray(pattern)) {
+		return '[' + pattern.map(getDescription).join(', ') + ']';
+	}
+	else if (pattern === void 0) {
+		return 'undefined';
+	}
+
+	const description = JSON.stringify(pattern);
+	if (description === void 0 && pattern && pattern.name) {
+		return pattern.name;
+	}
+
+	return description;
+}
+
 export default function check(value, ...patterns) {
 	const _check = function(value, pattern, keys = []) {
 		if (typeof pattern === 'undefined') {
@@ -35,7 +51,7 @@ export default function check(value, ...patterns) {
 				const isValid = _check(value[key], pattern[key], nextKeys);
 
 				if (!isValid) {
-					throw new CheckError(`Value ${JSON.stringify(value[key])} is not of type ${JSON.stringify(pattern[key])}`, nextKeys.join('.'));
+					throw new CheckError(`Value ${JSON.stringify(value[key])} is not of type ${getDescription(pattern[key])}`, nextKeys.join('.'));
 				}
 
 				return isValid;
@@ -59,7 +75,7 @@ export default function check(value, ...patterns) {
 		});
 
 		if (!isValid) {
-			throw new CheckError(`Value ${JSON.stringify(value)} is not of type ${patterns.map((pattern) => JSON.stringify(pattern)).join(', ')}.`);
+			throw new CheckError(`Value ${JSON.stringify(value)} is not of type ${patterns.map((pattern) => getDescription(pattern)).join(', ')}.`);
 		}
 	}
 }
