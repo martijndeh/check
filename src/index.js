@@ -21,6 +21,12 @@ export default function check(value, ...patterns) {
 		if (typeof pattern === 'undefined') {
 			return (typeof value === 'undefined');
 		}
+		else if (pattern === true) {
+			return (value === true);
+		}
+		else if (pattern === false) {
+			return (value === false);
+		}
 		else if (pattern === null) {
 			return (value === null);
 		}

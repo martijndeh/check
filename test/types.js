@@ -22,6 +22,8 @@ describe('types', function() {
 		assert.throws(() => check(function() {}, undefined), CheckError);
 		assert.throws(() => check({id: 123}, undefined), CheckError);
 		assert.throws(() => check(new Error(), undefined), CheckError);
+		assert.throws(() => check(false, undefined), CheckError);
+		assert.throws(() => check(true, undefined), CheckError);
 	});
 
 	it('null', function() {
@@ -41,6 +43,8 @@ describe('types', function() {
 		assert.throws(() => check(function() {}, null), CheckError);
 		assert.throws(() => check({id: 123}, null), CheckError);
 		assert.throws(() => check(new Error(), null), CheckError);
+		assert.throws(() => check(false, null), CheckError);
+		assert.throws(() => check(true, null), CheckError);
 	});
 
 	it('String', function() {
@@ -63,6 +67,8 @@ describe('types', function() {
 		assert.throws(() => check(function() {}, String), CheckError);
 		assert.throws(() => check({id: 123}, String), CheckError);
 		assert.throws(() => check(new Error(), String), CheckError);
+		assert.throws(() => check(false, String), CheckError);
+		assert.throws(() => check(true, String), CheckError);
 	});
 
 	it('String or Number', function() {
@@ -83,6 +89,8 @@ describe('types', function() {
 		assert.throws(() => check(function() {}, String, Number), CheckError);
 		assert.throws(() => check({id: 123}, String, Number), CheckError);
 		assert.throws(() => check(new Error(), String, Number), CheckError);
+		assert.throws(() => check(false, String, Number), CheckError);
+		assert.throws(() => check(true, String, Number), CheckError);
 	});
 
 	it('Number', function() {
@@ -103,11 +111,17 @@ describe('types', function() {
 		assert.throws(() => check(function() {}, Number), CheckError);
 		assert.throws(() => check({id: 123}, Number), CheckError);
 		assert.throws(() => check(new Error(), Number), CheckError);
+		assert.throws(() => check(false, Number), CheckError);
+		assert.throws(() => check(true, Number), CheckError);
 	});
 
 	it('Boolean', function() {
 		check(true, Boolean);
+		check(true, true);
 		check(false, Boolean);
+		check(false, false);
+		check(false, false, true);
+		check(true, false, true);
 		check([false, true], [Boolean]);
 
 		assert.throws(() => check(undefined, Boolean), CheckError);
@@ -121,6 +135,8 @@ describe('types', function() {
 		assert.throws(() => check(function() {}, Boolean), CheckError);
 		assert.throws(() => check({id: 123}, Boolean), CheckError);
 		assert.throws(() => check(new Error(), Boolean), CheckError);
+		assert.throws(() => check(false, Object), CheckError);
+		assert.throws(() => check(true, Object), CheckError);
 	});
 
 	it('RegExp', function() {
@@ -140,6 +156,8 @@ describe('types', function() {
 		assert.throws(() => check({id: 123}, /^test$/), CheckError);
 		assert.throws(() => check(new Error(), /^test$/), CheckError);
 		assert.throws(() => check('fail', /^test$/), CheckError);
+		assert.throws(() => check(false, Object), CheckError);
+		assert.throws(() => check(true, Object), CheckError);
 	});
 
 	it('Object', function() {
@@ -156,6 +174,8 @@ describe('types', function() {
 		assert.throws(() => check(1, Object), CheckError);
 		assert.throws(() => check(function() {}, Object), CheckError);
 		assert.throws(() => check('fail', Object), CheckError);
+		assert.throws(() => check(false, Object), CheckError);
+		assert.throws(() => check(true, Object), CheckError);
 	});
 
 	it('Object keys', function() {
@@ -174,6 +194,8 @@ describe('types', function() {
 		assert.throws(() => check(1, {id: String}), CheckError);
 		assert.throws(() => check(function() {}, {id: String}), CheckError);
 		assert.throws(() => check('fail', {id: String}), CheckError);
+		assert.throws(() => check(false, {id: String}), CheckError);
+		assert.throws(() => check(true, {id: String}), CheckError);
 	});
 
 	it('Array', function() {
@@ -191,6 +213,8 @@ describe('types', function() {
 		assert.throws(() => check('fail', Array), CheckError);
 		assert.throws(() => check({}, Array), CheckError);
 		assert.throws(() => check({id: 123}, Array), CheckError);
+		assert.throws(() => check(false, Array), CheckError);
+		assert.throws(() => check(true, Array), CheckError);
 	});
 
 	it('Function', function() {
@@ -206,6 +230,8 @@ describe('types', function() {
 		assert.throws(() => check('fail', Function), CheckError);
 		assert.throws(() => check({}, Function), CheckError);
 		assert.throws(() => check({id: 123}, Function), CheckError);
+		assert.throws(() => check(false, Function), CheckError);
+		assert.throws(() => check(true, Function), CheckError);
 	});
 
 	it('Nested objects', function() {
